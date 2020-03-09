@@ -1,0 +1,26 @@
+body {
+    min-width: 320px;
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+form {
+    margin-top: 50px;
+}
+
+#_container-images {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+#_container-images img {
+    object-fit: cover;
+    height: 320px;
+    width: 320px;
+    /* border: 2px solid black; */
+    margin: 2px;
+}
