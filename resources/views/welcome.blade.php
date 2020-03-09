@@ -2,7 +2,7 @@
 
 @section('content')
     <h2>Search instagram by tag</h2>
-    <form action="{{ action('InstagramController@home') }}" method="get">
+    <form action="{{ action('InstagramController@tagSearch') }}" method="get">
         <p><input type="search" name='tag' value="{{$tag}}" placeholder="Tag"> 
             <input type="submit" value="Search">
         </p>
@@ -18,6 +18,5 @@
                 <img src="{{ $image }}">
             @endforeach
         @endif
-
     </div>
 @endsection

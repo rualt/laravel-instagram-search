@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class InstagramController extends Controller
 {
 
-    public function home(Request $request)
+    public function tagSearch(Request $request)
     {   
         $error = '';
         $instagram = new Instagram();
@@ -26,17 +26,14 @@ class InstagramController extends Controller
         } catch (\Exception $exception) {
             $error = $exception->getMessage();
         }
-
         if (!empty($error)) {
             return view('welcome', ['tag' => $tag, 'error' => $error]);
         }
-        
-        $medias = $instagram->getMediasByTag($tag, 44);
 
+        $medias = $instagram->getMediasByTag($tag, 44);
         foreach ($medias as $media) {
             $images[] = $media->getImageHighResolutionUrl();
         }
-
         $params = [
             'tag' => $tag,
             'images' => $images

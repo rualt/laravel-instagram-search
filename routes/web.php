@@ -17,4 +17,4 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', 'InstagramController@home');
+Route::get('/', 'InstagramController@tagSearch');
