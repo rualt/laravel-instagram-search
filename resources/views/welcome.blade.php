@@ -9,7 +9,7 @@
         </form>
         <div id="_container-images">
             @foreach ($images as $image)
-                <img src="{{ $image }}">|
+                <img src="{{ $image }}">
             @endforeach
         </div>
 @endsection
