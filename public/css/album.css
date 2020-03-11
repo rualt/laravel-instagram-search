@@ -4,18 +4,37 @@
     margin-bottom: 0;
     background-color: #fff;
   }
+  @media (min-width: 0px) {
+    img {
+        object-fit: cover;
+        width: 100%;
+        overflow: hidden;
+    }
+  }
+
+
   @media (min-width: 768px) {
     .jumbotron {
       padding-top: 6rem;
       padding-bottom: 6rem;
     }
 
-    /* img {
-        max-width: 100%;
-        height: auto;
-    } */
+    img {
+        height: 208px;
+    }
   }
-  
+
+  @media (min-width: 992px) {
+    img {
+            height: 300px;
+    }
+
+  @media (min-width: 1200px) {
+    img {
+        height: 350px;
+    }
+  }
+
   .jumbotron p:last-child {
     margin-bottom: 0;
   }
@@ -37,18 +56,7 @@
     margin-bottom: .25rem;
   }
 
-  #_container-images {
-    /* display: flex; */
-    /* flex-wrap: wrap; */
+  .instagram-image {
+    display: flex;
     align-items: center;
-    justify-content: center;
-}
-
-#_container-images img {
- object-fit: cover;
-  height: 300px;
-  width: 300px;
-}
-
-  img {
 }
