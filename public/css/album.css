@@ -37,9 +37,9 @@
     margin-bottom: .25rem;
   }
 
-  /* #_container-images {
-    display: flex;
-    flex-wrap: wrap;
+  #_container-images {
+    /* display: flex; */
+    /* flex-wrap: wrap; */
     align-items: center;
     justify-content: center;
 }
@@ -48,10 +48,7 @@
  object-fit: cover;
   height: 300px;
   width: 300px;
-} */
+}
 
   img {
-    display: block;
-    height: 300px;
-    width: 300px;
 }
