@@ -6,18 +6,18 @@
         <div class="container">
             <h1>InstaTagSearch</h1>
             <p class="lead text-muted">Search instagram by tag</p>
-            <form action="{{ action('InstagramController@tagSearch') }}" method="get">
-                <input type="search" class="form-control" name='tag' value="{{$tag}}" placeholder="Tag" required autofocus>
-                <button class="btn btn-lg btn-primary btn-block" type="submit" value="Search">Search</button>
+            <form class="form-inline align-items-center" action="{{ action('InstagramController@tagSearch') }}" method="get">
+                <input type="search" class="form-control col-md-9 mx-sm-2" name='tag' value="{{$tag}}" placeholder="Tag" required>
+                <button class="btn btn-outline-dark" type="submit" value="Search">Search tag</button>
             </form>
         </div>
     </section>
 
-    @if (isset($error))
+    @if (isset($error) and !empty($tag))
     <section class="font-weight-bold text-center text-muted">
         <p>{{ $error }}</p>
     </section>
-    @else
+    @elseif (!empty($tag))
         <div class="album py-5 bg-light">
             <div class="container">
                 <div class="row">
