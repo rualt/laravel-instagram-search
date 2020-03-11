@@ -25,7 +25,7 @@
         @foreach ($images as $image)
           <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
-              <div id="_container-images">
+              <div class="instagram-image">
                   <img src="{{ $image }}">
               </div>
             </div> 
