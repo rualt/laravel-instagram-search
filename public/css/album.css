@@ -4,6 +4,7 @@
     margin-bottom: 0;
     background-color: #fff;
   }
+
   @media (min-width: 0px) {
     img {
         object-fit: cover;
@@ -12,13 +13,11 @@
     }
   }
 
-
   @media (min-width: 768px) {
     .jumbotron {
       padding-top: 6rem;
       padding-bottom: 6rem;
     }
-
     img {
         height: 208px;
     }
@@ -28,6 +27,7 @@
     img {
             height: 300px;
     }
+}
 
   @media (min-width: 1200px) {
     img {
