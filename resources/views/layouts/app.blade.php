@@ -12,11 +12,13 @@
     <title>InstaTag - @yield('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="csrf-param" content="_token" />
-
+    
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    @include ('layouts.scripts')
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -44,19 +46,21 @@
         }
       }
     </style>
+
     <!-- Custom styles for this template -->
     <link href="/css/album.css" rel="stylesheet">
-    
-  </head>
+
+    </head>
 
 
-<body>
-@include ('layouts.header')
+    <body>
+        @include ('layouts.header')
 
-    @yield ('content')
+            @yield ('content')
 
-@include ('layouts.footer')
-</body>
+        @include ('layouts.footer')
+    </body>
+
 </html>
 
 
