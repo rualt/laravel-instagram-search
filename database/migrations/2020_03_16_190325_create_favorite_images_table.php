@@ -16,6 +16,8 @@ class CreateFavoriteImagesTable extends Migration
         Schema::create('favorite_images', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->text('page_link');
+            $table->text('square_image');
         });
     }
 

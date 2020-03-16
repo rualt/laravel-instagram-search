@@ -17,4 +17,13 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', 'InstagramController@tagSearch');
+// Route::get('/', 'InstagramController@tagSearch');
+Route::get('/', function() {
+    return response()->json([
+     'stuff' => phpinfo()
+    ]);
+ });
+
+
+Route::get('/index', 'InstagramController@tagSearch');
+Route::get('/favorites', 'InstagramController@tagSearch');

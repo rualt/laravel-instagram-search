@@ -15,6 +15,7 @@ class InstagramController extends Controller
         $instagram = new Instagram();
         $tag = str_replace(' ', '', $request['tag']);
         $imageCount = (int) $request['imageCount'];
+
         try {
             $medias = $instagram->getMediasByTag($tag, $imageCount);
             if (!isset($medias[0])) {
@@ -45,6 +46,6 @@ class InstagramController extends Controller
             'media' => $medias[0]
         ];
 
-        return view('pages.index', $params);
+        return view('page.index', $params);
     }
 }
