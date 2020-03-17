@@ -25,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 //  });
 
 Route::get('/', 'InstagramController@search');
+Route::get('/favorites', 'InstagramController@favorite');
+
 
 Route::post('/add', 'InstagramController@add');
 Route::get('/favorites', 'InstagramController@favorite');
