@@ -5,11 +5,30 @@ namespace App\Http\Controllers;
 use InstagramScraper\Instagram;
 use InstagramScraper\Exception\InstagramNotFoundException;
 use Illuminate\Http\Request;
+use App\FavoriteImage;
 
 class InstagramController extends Controller
 {
 
-    public function tagSearch(Request $request)
+    public function add (Request $request)
+    {   
+        // $image = new FavoriteImage;
+        // $image->page_link = $request->pageLink;
+        // $image->square_image = $request->squareImage;
+        // $image->save();
+
+        // $this->validate($request, [
+        //     'page_link ' => 'required|unique:text',
+        //     'square_image' => 'required|unique:text',
+        // ]);
+
+        $image = new FavoriteImage;
+        $image->fill($request->all());
+        // dd($image);
+        $image->save();
+    }
+
+    public function search(Request $request)
     {
         $error = '';
         $instagram = new Instagram();
@@ -28,7 +47,7 @@ class InstagramController extends Controller
         }
 
         if (!empty($error)) {
-            return view('welcome', ['tag' => $tag, 'error' => $error]);
+            return view('index', ['tag' => $tag, 'error' => $error]);
         }
 
         $medias = $instagram->getMediasByTag($tag, $imageCount);
@@ -42,10 +61,9 @@ class InstagramController extends Controller
         }
         $params = [
             'tag' => $tag,
-            'images' => $images,
-            'media' => $medias[0]
-        ];
+            'images' => $images
+            ];
 
-        return view('page.index', $params);
+        return view('index', $params);
     }
 }
