@@ -2,14 +2,15 @@
 
 @section ('content')
 
+
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
-            @foreach ($image_list as $image)
+            @foreach ($images as $image)
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
                     <div class="image-container">
-                        <img class="card-img-top" src="{{ $images['square'] }}">
+                        <img class="card-img-top" src="{{ $image->square_image }}">
                     </div>
                     
                     <div class="card-body">

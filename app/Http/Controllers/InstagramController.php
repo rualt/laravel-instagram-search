@@ -8,7 +8,13 @@ use Illuminate\Http\Request;
 use App\FavoriteImage;
 
 class InstagramController extends Controller
-{
+{   
+
+    public function favorite()
+    {   
+        $images = FavoriteImage::all();
+        return view('favorites', compact('images'));
+    }
 
     public function add (Request $request)
     {   
