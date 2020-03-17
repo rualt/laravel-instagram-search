@@ -57,6 +57,8 @@
         @include ('layouts.header')
 
             @yield ('content')
+        
+            @include ('layouts.scripts')
 
         @include ('layouts.footer')
     </body>
