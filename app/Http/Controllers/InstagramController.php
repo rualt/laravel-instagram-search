@@ -8,16 +8,15 @@ use Illuminate\Http\Request;
 use App\FavoriteImage;
 
 class InstagramController extends Controller
-{   
-
+{
     public function favorite()
-    {   
+    {
         $images = FavoriteImage::all();
         return view('favorites', compact('images'));
     }
 
-    public function add (Request $request)
-    {   
+    public function add(Request $request)
+    {
         // $image = new FavoriteImage;
         // $image->page_link = $request->pageLink;
         // $image->square_image = $request->squareImage;
@@ -27,11 +26,17 @@ class InstagramController extends Controller
         //     'page_link ' => 'required|unique:text',
         //     'square_image' => 'required|unique:text',
         // ]);
-
         $image = new FavoriteImage;
         $image->fill($request->all());
-        // dd($image);
         $image->save();
+        return redirect()->route('index');
+    }
+
+    public function delete(Request $request)
+    {
+        $id = $request->id;
+        FavoriteImage::where('id', $id)->delete();
+        return redirect()->route('favorites');
     }
 
     public function search(Request $request)
@@ -57,12 +62,13 @@ class InstagramController extends Controller
         }
 
         $medias = $instagram->getMediasByTag($tag, $imageCount);
+        $media = $medias[array_key_first($medias)];
+        $biggestImageKey = array_key_last($media->getSquareImages());
+
         foreach ($medias as $media) {
             $images[] = [
-                'original' => $media->getImageHighResolutionUrl(),
-                'square' => $media->getSquareImages()[4],
-                'caption' => $media->getCaption(),
-                'link' => $media->getLink()
+                'square' => $media->getSquareImages()[$biggestImageKey],
+                'source' => $media->getLink()
             ];
         }
         $params = [
