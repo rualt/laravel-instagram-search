@@ -18,12 +18,16 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Route::get('/', 'InstagramController@tagSearch');
-Route::get('/', function() {
-    return response()->json([
-     'stuff' => phpinfo()
-    ]);
- });
+// Route::get('/', function() {
+//     return response()->json([
+//      'stuff' => phpinfo()
+//     ]);
+//  });
+
+Route::get('/', 'InstagramController@search');
+Route::get('/favorites', 'InstagramController@favorite');
 
 
-Route::get('/index', 'InstagramController@tagSearch');
-Route::get('/favorites', 'InstagramController@tagSearch');
+Route::post('/add', 'InstagramController@add');
+Route::get('/favorites', 'InstagramController@favorite');
+Route::post('/delete', 'InstagramController@delete');

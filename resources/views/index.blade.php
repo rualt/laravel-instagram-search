@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
     <main role="main">
     <section class="jumbotron text-center">
         <div class="container">
             <h1>InstaTagSearch</h1>
             <p class="lead text-muted">Search instagram by tag</p>
-            <form action="{{ action('InstagramController@tagSearch') }}" method="get">
+            <form action="{{ action('InstagramController@search') }}" method="get">
                 <div class="form-row">
                     <div class="form-group col-md-10">
                         <input type="text" class="form-control" 
@@ -27,8 +28,6 @@
         </div>
     </section>
 
-
-        {{-- {{var_dump($media)}} --}}
     @if (isset($error) and !empty($tag))
     <section class="font-weight-bold text-center text-muted">
         <p>{{ $error }}</p>
@@ -44,13 +43,32 @@
                                 <div class="instagram-image card-img-top">
                                     <img src="{{ $image['square'] }}">
                                 </div>
+                                
+
+                                <!-- <div class="card-body">
+                                    <div class="btn-group d-flex justify-content-between align-items-center">
+                                    <a href="{{ $image['square'] }}" target="_blank" role="button" class="btn btn-secondary">Instagram</a>
+                                    <form>
+                                    <input type="hidden" class="img_src" name="page_link" value="{{ $image['link'] }}">
+                                    <input type="hidden" class="insta_link" name="square_image" value="{{ $image['square'] }}">
+                                    {{ csrf_field() }}
+                                        <button type="submit" class="like btn btn-outline-secondary">Add to favorite</button>
+                                        <button type="submit" class="dislike btn btn-outline-secondary d-none">Remove from favorite</button>
+                                    </form>
+                                    </div>
+                                </div> -->
 
                                 <div class="card-body">
                                 {{-- <p class="card-text">{{$image['caption']}}</p> --}}
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{$image['link']}}" target="_blank">View on Instagram<a></button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">Add to favorites</button>
+                                            <form action="{{ action('InstagramController@add') }}" method="post">
+                                            <input type="hidden" name="page_link" value="{{ $image['link'] }}">
+                                            <input type="hidden" name="square_image" value="{{ $image['square'] }}">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-sm btn-outline-secondary">Add to favorites</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
