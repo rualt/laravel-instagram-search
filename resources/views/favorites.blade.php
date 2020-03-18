@@ -10,10 +10,10 @@
             <a href="{{ route('index') }}">Go back and search</a>
         </div>
     </section>
-
 @if (isset($images))
 <div class="album py-5 bg-light">
     <div class="container">
+        <img src="images/ajax-loader.gif" alt="" id="loader">
         <div class="row">
             @foreach ($images as $image)
                 <div class="col-md-4">
@@ -28,8 +28,8 @@
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{$image['page_link']}}" target="_blank">View on Instagram<a></button>
                                     <form>
-                                        <input type="hidden" class="source" name="source" value="{{ $image['source'] }}">
-                                        <input type="hidden" class="square" name="square" value="{{ $image['square'] }}">
+                                        <input type="hidden" class="source" name="source" value="{{ $image['page_link'] }}">
+                                        <input type="hidden" class="square" name="square" value="{{ $image['square_image'] }}">
                                         <input type="hidden" class="id" name="id" value="{{ $image['id'] }}">
                                         <button type="submit" class="like btn btn-outline-secondary d-none">Add to
                                             favorite</button>
