@@ -26,8 +26,6 @@
                 <button type="submit" class="btn btn-outline-dark" value="Search">Search tag</button>
             </form>
             <a href="{{ route('favorites') }}">Favorites</a>
-            <img src="images/ajax-loader.gif" alt="" id="loader">
-
         </div>
     </section>
 
@@ -47,9 +45,9 @@
                                     <img src="{{ $image['square'] }}">
                                 </div>
                                 <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{$image['source']}}" target="_blank">View on Instagram<a></button>
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-outline-secondary"><a href="{{$image['source']}}" target="_blank">View on Instagram<a></button>
                                             <form>
                                                 <input type="hidden" class="source" name="source" value="{{ $image['source'] }}">
                                                 <input type="hidden" class="square" name="square" value="{{ $image['square'] }}">
