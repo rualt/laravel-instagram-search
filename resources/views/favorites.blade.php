@@ -13,7 +13,6 @@
 @if (isset($images))
 <div class="album py-5 bg-light">
     <div class="container">
-        <img src="images/ajax-loader.gif" alt="" id="loader">
         <div class="row">
             @foreach ($images as $image)
                 <div class="col-md-4">
