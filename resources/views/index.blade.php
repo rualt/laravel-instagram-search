@@ -45,18 +45,16 @@
                                     <img src="{{ $image['square'] }}">
                                 </div>
                                 <div class="card-body">
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-outline-secondary"><a href="{{$image['source']}}" target="_blank">View on Instagram<a></button>
-                                            <form>
-                                                <input type="hidden" class="source" name="source" value="{{ $image['source'] }}">
-                                                <input type="hidden" class="square" name="square" value="{{ $image['square'] }}">
-                                            <button type="submit" class="like btn btn-outline-secondary">Add to
-                                                favorite</button>
-                                            <button type="submit" class="dislike btn btn-outline-secondary d-none">Remove from
-                                                favorite</button>  
-                                            </form>
-                                        </div>
+                                    <div class="button-group d-flex flex-wrap justify-content-center align-items-center" role="group">
+                                            <button type="button" class="btn btn-outline-info btn-sm"><a href="{{$image['source']}}" target="_blank">View on Instagram<a></button>
+                                        <form class="galery-update">
+                                            <input type="hidden" class="source" name="source" value="{{ $image['source'] }}">
+                                            <input type="hidden" class="square" name="square" value="{{ $image['square'] }}">
+                                        <button type="submit" name="submit" formaction="add" class=" add btn btn-outline-success btn-sm">Add to
+                                            favorite</button>
+                                        <button type="submit" name="submit" formaction="delete" class="delete btn btn-outline-danger btn-sm d-none">Remove from
+                                            favorite</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div> 
