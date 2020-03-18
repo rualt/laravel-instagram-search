@@ -31,7 +31,6 @@
                                         <input type="hidden" class="source" name="source" value="{{ $image['source'] }}">
                                         <input type="hidden" class="square" name="square" value="{{ $image['square'] }}">
                                         <input type="hidden" class="id" name="id" value="{{ $image['id'] }}">
-                                        {{ csrf_field() }}
                                         <button type="submit" class="like btn btn-outline-secondary d-none">Add to
                                             favorite</button>
                                         <button type="submit" class="dislike btn btn-outline-secondary">Remove from

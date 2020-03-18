@@ -26,6 +26,8 @@
                 <button type="submit" class="btn btn-outline-dark" value="Search">Search tag</button>
             </form>
             <a href="{{ route('favorites') }}">Favorites</a>
+            <img src="images/ajax-loader.gif" alt="" id="loader">
+
         </div>
     </section>
 
@@ -48,11 +50,13 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{$image['source']}}" target="_blank">View on Instagram<a></button>
-                                            <form action="{{ action('InstagramController@add') }}" method="post">
-                                            <input type="hidden" name="source" value="{{ $image['source'] }}">
-                                            <input type="hidden" name="square" value="{{ $image['square'] }}">
-                                            {{ csrf_field() }}
-                                            <button type="submit" class="btn btn-sm btn-outline-secondary">Add to favorites</button>
+                                            <form>
+                                                <input type="hidden" class="source" name="source" value="{{ $image['source'] }}">
+                                                <input type="hidden" class="square" name="square" value="{{ $image['square'] }}">
+                                            <button type="submit" class="like btn btn-outline-secondary">Add to
+                                                favorite</button>
+                                            <button type="submit" class="dislike btn btn-outline-secondary d-none">Remove from
+                                                favorite</button>  
                                             </form>
                                         </div>
                                     </div>

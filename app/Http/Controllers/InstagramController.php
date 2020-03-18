@@ -26,14 +26,16 @@ class InstagramController extends Controller
         //     'page_link ' => 'required|unique:text',
         //     'square_image' => 'required|unique:text',
         // ]);
+
         $image = new FavoriteImage;
-        $image->fill($request->all());
+        // $image->fill($request->all());
+        $image->page_link = $request->source;
+        $image->square_image = $request->square;
         $image->save();
-        return redirect()->route('index');
     }
 
     public function delete(Request $request)
-    {
+    {   
         $id = $request->id;
         FavoriteImage::where('id', $id)->delete();
         return redirect()->route('favorites');
