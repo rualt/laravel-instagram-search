@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::get('/', 'InstagramController@tagSearch');
 // Route::get('/', function() {
 //     return response()->json([
 //      'stuff' => phpinfo()
@@ -27,5 +22,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'InstagramController@search')->name('index');
 Route::get('/favorites', 'InstagramController@favorite')->name('favorites');
 
-Route::post('/add', 'InstagramController@add')->name('add');
-Route::post('/delete', 'InstagramController@delete')->name('delete');
+Route::post('/add', 'InstagramController@add');
+Route::post('/delete', 'InstagramController@delete');
