@@ -18,14 +18,13 @@ class InstagramController extends Controller
     public function add(Request $request)
     {
         $image = new FavoriteImage;
-        // $image->fill($request->all());
         $image->page_link = $request->source;
         $image->square_image = $request->square;
         $image->save();
     }
 
     public function delete(Request $request)
-    {   
+    {
         $source = $request->source;
         FavoriteImage::where('page_link', $source)->delete();
     }
@@ -49,7 +48,7 @@ class InstagramController extends Controller
         }
 
         if (!empty($error)) {
-            return view('index', ['tag' => $tag, 'error' => $error]);
+            return view('index', compact('tag', 'error'));
         }
 
         $medias = $instagram->getMediasByTag($tag, $imageCount);
@@ -62,12 +61,7 @@ class InstagramController extends Controller
                 'source' => $media->getLink()
             ];
         }
-        $params = [
-            'tag' => $tag,
-            'images' => $images,
-            'media' => $media
-            ];
 
-        return view('index', $params);
+        return view('index', compact('tag', 'images'));
     }
 }
