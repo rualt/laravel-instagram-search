@@ -88,4 +88,5 @@
       height: 100%;
       z-index: 9999;
       background: url('../images/ajax-loader.gif') 50% 50% no-repeat;
+      display: none;
     }
