@@ -27,6 +27,10 @@
         var square = $(this).parent().find('.square').val();
 
         $.ajax({
+            beforeSend: function() {
+            $('.loader').show();
+        },
+
            type:'POST',
            url:'add',
            data:{source:source, square:square},
@@ -41,7 +45,7 @@
                     {
                      //This block will execute after success/error executes.
                      //Make the loader div empty
-                    //  $("#loader").hide();
+                    $(".loader").hide();
             }
         });
     });
@@ -56,6 +60,9 @@
         var id = $(this).parent().find('.id').val();
 
         $.ajax({
+            beforeSend: function() {
+            $('.loader').show();
+        },
            type:'POST',
            url:'delete',
            data:{source:source, square:square, id:id},
@@ -70,17 +77,14 @@
                     {
                      //This block will execute after success/error executes.
                      //Make the loader div empty
-                     $("#loader").hide();
+                     $(".loader").hide();
                     }
         });
     });
-    
+
     $.ajax({
             beforeSend: function() {
-            $('#loader').show();
+            $('.loader').hide();
         },
-            complete: function() {
-            $('#loader').hide();
-        }
     });
 </script>
