@@ -17,16 +17,6 @@ class InstagramController extends Controller
 
     public function add(Request $request)
     {
-        // $image = new FavoriteImage;
-        // $image->page_link = $request->pageLink;
-        // $image->square_image = $request->squareImage;
-        // $image->save();
-
-        // $this->validate($request, [
-        //     'page_link ' => 'required|unique:text',
-        //     'square_image' => 'required|unique:text',
-        // ]);
-
         $image = new FavoriteImage;
         // $image->fill($request->all());
         $image->page_link = $request->source;
@@ -36,9 +26,8 @@ class InstagramController extends Controller
 
     public function delete(Request $request)
     {   
-        $id = $request->id;
-        FavoriteImage::where('id', $id)->delete();
-        return redirect()->route('favorites');
+        $source = $request->source;
+        FavoriteImage::where('page_link', $source)->delete();
     }
 
     public function search(Request $request)
@@ -75,7 +64,8 @@ class InstagramController extends Controller
         }
         $params = [
             'tag' => $tag,
-            'images' => $images
+            'images' => $images,
+            'media' => $media
             ];
 
         return view('index', $params);
