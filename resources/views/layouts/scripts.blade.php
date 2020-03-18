@@ -8,5 +8,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/loader.js') }}"></script>
+    <script src="{{ asset('js/gallery-update.js') }}"></script>
+    {{-- <script src="{{ asset('js/script.js') }}"></script> --}}
+
 
