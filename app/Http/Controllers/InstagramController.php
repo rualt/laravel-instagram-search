@@ -33,23 +33,12 @@ class InstagramController extends Controller
 
     public function download(Request $request)
     {
-        // dd($request);
-        // dd($request->image);
-        // $image = $request->image;
-        // file_put_contents('/home/rualt/Documents/Projects/laravel-instagram-app/public/images', $image);
-        // $path = $image . "name" . "jpg";
-
-        // $image = file_get_contents($request->image);
-        // File::put(public_path('images/a.png'), $image);
-        // dd();
-        // return response()->download($path));
         $id = $request->id;
         $image = $request->image;
-        dd($image);
-        $filename = $id . '.png';
-        $tempfile = tempnam(sys_get_temp_dir(), $filename);
-        copy($request->image, $tempfile);
-        return response()->download($tempfile, $filename);
+        $imageContent = file_get_contents($image);
+        $filename = $id . '.jpg';
+        Storage::disk('public')->put($filename, $imageContent);
+        return response()->download(storage_path("app/public/{$filename}"))->deleteFileAfterSend();
     }
 
     public function search(Request $request)
