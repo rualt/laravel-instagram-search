@@ -26,9 +26,9 @@
                         <option value="30">30</option>
                         <option value="45">45</option>
                         <option value="60">60</option>
-                        <option value="120"></option>
-                        <option value="250"></option>
-                        <option value="500"></option>
+                        <option value="120">120</option>
+                        <option value="250">250</option>
+                        <option value="500">500</option>
                     </select>
                     </div>
                 </div>
