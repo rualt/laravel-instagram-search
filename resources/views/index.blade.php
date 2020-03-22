@@ -52,7 +52,8 @@
 
                                 <div class="card-body">
                                     <div class="button-group d-flex flex-wrap justify-content-center align-items-center" role="group">
-                                            <button type="button" class="btn btn-outline-info btn-sm"><a href="{{$image['source']}}" target="_blank">View on Instagram<a></button>
+                                        <button type="button" class="btn btn-outline-info btn-sm"><a href="{{$image['source']}}" target="_blank">View on Instagram<a></button>
+
                                         <form class="galery-update">
                                             <input type="hidden" class="source" name="source" value="{{ $image['source'] }}">
                                             <input type="hidden" class="square" name="square" value="{{ $image['square'] }}">
@@ -60,6 +61,12 @@
                                             favorite</button>
                                         <button type="submit" name="submit" formaction="delete" class="delete btn btn-outline-danger btn-sm d-none">Remove from
                                             favorite</button>
+                                        </form>
+
+                                        <form class="galery-download" action="{{ action('InstagramController@download') }}">
+                                            <input type="hidden" class="id" name="id" value="{{ $image['id'] }}">
+                                            <input type="hidden" class="image" name="image" value="{{ $image['high_resolution'] }}">
+                                            <button type="submit" name="submit" formaction="/download" class="btn btn-outline-warning btn-sm">download</button>
                                         </form>
                                     </div>
                                 </div>

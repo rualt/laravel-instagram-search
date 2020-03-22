@@ -6,6 +6,8 @@ use InstagramScraper\Instagram;
 use InstagramScraper\Exception\InstagramNotFoundException;
 use Illuminate\Http\Request;
 use App\FavoriteImage;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class InstagramController extends Controller
 {
@@ -27,6 +29,27 @@ class InstagramController extends Controller
     {
         $source = $request->source;
         FavoriteImage::where('page_link', $source)->delete();
+    }
+
+    public function download(Request $request)
+    {
+        // dd($request);
+        // dd($request->image);
+        // $image = $request->image;
+        // file_put_contents('/home/rualt/Documents/Projects/laravel-instagram-app/public/images', $image);
+        // $path = $image . "name" . "jpg";
+
+        // $image = file_get_contents($request->image);
+        // File::put(public_path('images/a.png'), $image);
+        // dd();
+        // return response()->download($path));
+        $id = $request->id;
+        $image = $request->image;
+        dd($image);
+        $filename = $id . '.png';
+        $tempfile = tempnam(sys_get_temp_dir(), $filename);
+        copy($request->image, $tempfile);
+        return response()->download($tempfile, $filename);
     }
 
     public function search(Request $request)
@@ -58,7 +81,9 @@ class InstagramController extends Controller
         foreach ($medias as $media) {
             $images[] = [
                 'square' => $media->getSquareImages()[$biggestImageKey],
-                'source' => $media->getLink()
+                'source' => $media->getLink(),
+                'high_resolution'=> $media->getImageHighResolutionUrl(),
+                'id' => $media->getId()
             ];
         }
 

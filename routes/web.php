@@ -22,5 +22,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'InstagramController@search')->name('index');
 Route::get('/favorites', 'InstagramController@favorite')->name('favorites');
 
+Route::get('/download', 'InstagramController@download')->name('download');
 Route::post('/add', 'InstagramController@add');
 Route::post('/delete', 'InstagramController@delete');
