@@ -6,6 +6,8 @@ use InstagramScraper\Instagram;
 use InstagramScraper\Exception\InstagramNotFoundException;
 use Illuminate\Http\Request;
 use App\FavoriteImage;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class InstagramController extends Controller
 {
@@ -27,6 +29,16 @@ class InstagramController extends Controller
     {
         $source = $request->source;
         FavoriteImage::where('page_link', $source)->delete();
+    }
+
+    public function download(Request $request)
+    {
+        $id = $request->id;
+        $image = $request->image;
+        $imageContent = file_get_contents($image);
+        $filename = $id . '.jpg';
+        Storage::disk('public')->put($filename, $imageContent);
+        return response()->download(storage_path("app/public/{$filename}"))->deleteFileAfterSend();
     }
 
     public function search(Request $request)
@@ -58,7 +70,9 @@ class InstagramController extends Controller
         foreach ($medias as $media) {
             $images[] = [
                 'square' => $media->getSquareImages()[$biggestImageKey],
-                'source' => $media->getLink()
+                'source' => $media->getLink(),
+                'high_resolution'=> $media->getImageHighResolutionUrl(),
+                'id' => $media->getId()
             ];
         }
 
