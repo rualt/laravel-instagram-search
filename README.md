@@ -1,6 +1,6 @@
-# Search instanram by tag
+# Instagram Search
 
-This webapp allows you to search instagram images by tag, save or download them.
+This simple webapp allows you to search instagram images by tag, save or download them.
 
 The project uses: Laravel, Ajax, Bootstrap, [Instagram Php Scraper](https://github.com/postaddictme/instagram-php-scraper).
 
